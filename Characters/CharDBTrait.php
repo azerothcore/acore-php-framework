@@ -6,6 +6,10 @@ trait CharDBTrait {
 
     protected $charDB;
 
+    /**
+     * 
+     * @return CharDB
+     */
     public function getCharDB() {
         return $this->charDB;
     }
