@@ -1,7 +1,7 @@
 <?php
 
 class ExampleModule extends \ACore\Realmlist\RListModule {
-    
+
     /**
      * 
      * @param \ACore\Realmlist\RList $rList

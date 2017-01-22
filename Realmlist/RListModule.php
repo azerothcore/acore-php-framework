@@ -12,10 +12,9 @@ abstract class RListModule extends Module {
     public function __construct() {
         
     }
-    
 
     public static function getInstance(RList $rList) {
-        return $rList->getModule(self::getName());
+        return parent::getInstance($rList);
     }
 
     public function getRList() {
@@ -34,4 +33,5 @@ abstract class RListModule extends Module {
     public function getAuthDB() {
         return $this->rList->getAuthDB();
     }
+
 }

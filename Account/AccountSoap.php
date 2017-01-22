@@ -5,16 +5,16 @@ namespace ACore\Account;
 use ACore\Soap\SoapModule;
 
 class AccountSoap extends SoapModule {
-   
-   /**
-    * 
-    * @param type $name
-    * @param type $password
-    * @param type $email
-    * @param type $addon
-    * @param type $lock
-    * @return \Exception|boolean
-    */
+
+    /**
+     * 
+     * @param type $name
+     * @param type $password
+     * @param type $email
+     * @param type $addon
+     * @param type $lock
+     * @return \Exception|boolean
+     */
     public function createAccountFull($name, $password, $email, $addon, $lock) {
 
         $res = $this->createAccount($name, $password);
@@ -45,11 +45,11 @@ class AccountSoap extends SoapModule {
     }
 
     /**
-    * This is a static mail that won't change 
-    * @param type $username
-    * @param type $email
-    * @return type
-    */
+     * This is a static mail that won't change 
+     * @param type $username
+     * @param type $email
+     * @return type
+     */
     public function setAccountRegMail($username, $email) {
         $email = strtolower($email);
         return $this->executeCommand('account set sec regmail ' . $username . ' ' . $email . ' ' . $email);
@@ -79,4 +79,5 @@ class AccountSoap extends SoapModule {
     public function deleteAccount($username) {
         return $this->executeCommand('account delete ' . $username);
     }
+
 }

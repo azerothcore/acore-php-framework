@@ -7,25 +7,25 @@ ini_set('soap.wsdl_cache_ttl', 0);
 ini_set('soap.wsdl_cache', 0);
 
 class SoapCli {
-    
+
     private $protocol;
     private $host;
     private $port;
     private $user;
     private $passwd;
-    
-    public function __construct($host,$port,$user,$passwd,$protocol="http") {
+
+    public function __construct($host, $port, $user, $passwd, $protocol = "http") {
         $this->protocol = $protocol;
         $this->host = $host;
         $this->port = $port;
         $this->user = $user;
         $this->passwd = $passwd;
     }
-    
+
     public function executeCommand($command) {
 
         $soap = new \SoapClient(NULL, Array(
-            'location' => $this->protocol.'://' . $this->host . ':' . $this->port . '/',
+            'location' => $this->protocol . '://' . $this->host . ':' . $this->port . '/',
             'uri' => 'urn:TC',
             'style' => SOAP_RPC,
             'login' => $this->user,
@@ -41,4 +41,5 @@ class SoapCli {
             return $e;
         }
     }
+
 }

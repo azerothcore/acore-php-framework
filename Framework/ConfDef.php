@@ -5,6 +5,7 @@ namespace ACore\Framework;
 use ACore\Service\Conf;
 
 class ConfDef extends Conf {
+
     // system wide dependencies
     // all default modules will be included here
     public $modules = [
@@ -13,7 +14,8 @@ class ConfDef extends Conf {
             \ACore\Account\AccountMgr::class
         ],
         "realm" => [
-            \ACore\Account\AccountSoap::class
+            \ACore\Account\AccountSoap::class,
+            \ACore\Creature\CreatureTemplate::class
         ],
     ];
 

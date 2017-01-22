@@ -3,6 +3,7 @@
 namespace ACore\Defines;
 
 class Paths {
-    const ROOT = __DIR__.'../';
-}
 
+    const ROOT = __DIR__ . '../';
+
+}

@@ -6,11 +6,17 @@ use ACore\Realm\Realm;
 use ACore\System\Module;
 
 abstract class RealmModule extends Module {
+
     protected $realm;
-    
+
     public function __construct() {
+        
     }
-    
+
+    public static function getInstance(Realm $realm) {
+        return parent::getInstance($realm);
+    }
+
     /**
      * 
      * @return Realm
@@ -31,7 +37,7 @@ abstract class RealmModule extends Module {
     public function getAuthDB() {
         return $this->realm->getAuthDB();
     }
-    
+
     /**
      * 
      * @return \ACore\Characters\CharDB
@@ -39,7 +45,7 @@ abstract class RealmModule extends Module {
     public function getCharDB() {
         return $this->realm->getCharDB();
     }
-    
+
     /**
      * 
      * @return \ACore\World\WorldDB

@@ -19,11 +19,12 @@ use ACore\Utils\AUtils as A;
  */
 class Realm extends Provider implements SoapProvider, WorldDBProvider, CharDBProvider, AuthDBProvider {
 
-    protected $authDB;
-    protected $charDB;
-    protected $worldDB;
+    use \ACore\Soap\SoapTrait;
+    use \ACore\Auth\AuthDBTrait;
+    use \ACore\World\WorldDBTrait;
+    use \ACore\Characters\CharDBTrait;
+
     protected $name;
-    protected $soapCli;
 
     function __construct($name, CharDB $charDB, $modules = array(), WorldDB $worldDB = NULL, AuthDB $authDB = NULL, SoapCli $soapCli = NULL) {
         $this->charDB = $charDB;
@@ -40,31 +41,29 @@ class Realm extends Provider implements SoapProvider, WorldDBProvider, CharDBPro
                 A::V($conf, "db_char_host"), A::V($conf, "db_char_name"), A::V($conf, "db_char_user"), A::V($conf, "db_char_pass"), A::V($conf, "db_char_port"), A::V($conf, "db_char_socket")
         );
 
-        $_this = new self($realmName, $charDB, A::V($conf, "modules"));
+        $authDB = NULL;
+        $worldDB = NULL;
+        $soapCli = NULL;
 
         if (A::V($conf, "db_auth_host")) {
-            $authDb = new AuthDB(
+            $authDB = new AuthDB(
                     A::V($conf, "db_auth_host"), A::V($conf, "db_auth_name"), A::V($conf, "db_auth_user"), A::V($conf, "db_auth_pass"), A::V($conf, "db_auth_port"), A::V($conf, "db_auth_socket")
             );
-
-            $_this->setAuthDB($authDB);
         }
 
         if (A::V($conf, "db_world_host")) {
-            $worldDb = new WorldDB(
+            $worldDB = new WorldDB(
                     A::V($conf, "db_world_host"), A::V($conf, "db_world_name"), A::V($conf, "db_world_user"), A::V($conf, "db_world_pass"), A::V($conf, "db_world_port"), A::V($conf, "db_world_socket")
             );
-
-            $_this->setWorldDB($worldDb);
         }
 
         if (A::V($conf, "soap_host")) {
             $soapCli = new SoapCli(
                     A::V($conf, "soap_host"), A::V($conf, "soap_port"), A::V($conf, "soap_user"), A::V($conf, "soap_pass"), A::V($conf, "soap_protocol")
             );
-
-            $_this->setSoapCli($soapCli);
         }
+
+        $_this = new self($realmName, $charDB, A::V($conf, "modules"), $worldDB, $authDB, $soapCli);
 
         return $_this;
     }
@@ -82,6 +81,7 @@ class Realm extends Provider implements SoapProvider, WorldDBProvider, CharDBPro
             }
 
             if ($module instanceof WorldDBProvider) {
+                var_dump($this);
                 $module->setWorldDB($this->getWorldDB());
             }
 
@@ -100,45 +100,6 @@ class Realm extends Provider implements SoapProvider, WorldDBProvider, CharDBPro
     public function setName($name) {
         $this->name = $name;
         return $this;
-    }
-
-    /**
-     * 
-     * @return ACore\Auth\AuthDB
-     */
-    public function getAuthDB() {
-        return $this->authDB;
-    }
-
-    public function setAuthDB(AuthDB $authDB) {
-        $this->authDB = $authDB;
-        return $this;
-    }
-
-    public function getCharDB() {
-        return $this->charDB;
-    }
-
-    public function getWorldDB() {
-        return $this->worldDB;
-    }
-
-    public function setCharDB(CharDB $charDB) {
-        $this->charDB = $charDB;
-        return $this;
-    }
-
-    public function setWorldDB(WorldDB $worldDB) {
-        $this->worldDB = $worldDB;
-        return $this;
-    }
-
-    public function setSoapCli(SoapCli $soapCli) {
-        $this->soapCli = $soapCli;
-    }
-
-    public function getSoapCli() {
-        return $this->soapCli;
     }
 
 }

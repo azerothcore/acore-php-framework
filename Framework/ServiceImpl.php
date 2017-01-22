@@ -12,16 +12,16 @@ use ACore\Service\Conf;
  */
 class ServiceImpl extends Service {
 
-    public function __construct(Conf $conf,$name="") {
+    public function __construct(Conf $conf, $name = "") {
 
         $_conf = new ConfDef();
 
         $_conf->merge($conf);
 
-        parent::__construct($_conf,$name);
+        parent::__construct($_conf, $name);
     }
 
-    public static function createByConf($conf,$name="") {
+    public static function createByConf($conf, $name = "") {
         parent::createByConf($conf, $name);
     }
 

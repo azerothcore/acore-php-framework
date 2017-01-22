@@ -14,9 +14,9 @@ abstract class Conf {
     public $rList = [];
 
     public function merge(Conf $conf) {
-        $this->modules = array_merge_recursive ($this->modules, $conf->modules);
-        $this->rList = array_merge_recursive ($this->rList, $conf->rList);
-        
+        $this->modules = array_merge_recursive($this->modules, $conf->modules);
+        $this->rList = array_merge_recursive($this->rList, $conf->rList);
+
         return $this;
     }
 
