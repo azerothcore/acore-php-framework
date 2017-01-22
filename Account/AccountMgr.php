@@ -15,9 +15,18 @@ class AccountMgr extends RListModule {
      * @return Array || NULL
      */
     public function verifyAccount($username, $password) {
-        $result = $this->getAuthDB()->getAccountWithPass($username, $password);
+        $conn = $this->getAuthDB()->getConn();
+        $_username = $conn->escape_string($username);
+        $_password = $conn->escape_string($password);
 
-        if ($row = mysqli_fetch_array($result)) {
+        $enc_password = sha1(strtoupper($_username) . ':' . strtoupper($_password));
+
+        $result = $conn->query(""
+                . "SELECT * "
+                . "FROM account "
+                . "WHERE LOWER(username) = LOWER('" . $_username . "') AND sha_pass_hash = '" . $enc_password . "'");
+
+        if ($row = $result->fetch_array()) {
             return $row;
         }
 
@@ -25,9 +34,16 @@ class AccountMgr extends RListModule {
     }
 
     public function getAccountByName($username) {
-        $result = $this->getAuthDB()->getAccountInfoByName($username);
+        $conn = $this->getAuthDB()->getConn();
 
-        if ($row = mysqli_fetch_array($result)) {
+        $_username = $conn->escape_string($username);
+
+        $result = $conn->query(""
+                . "SELECT * "
+                . "FROM account "
+                . "WHERE LOWER(username) = LOWER('" . $_username . "');");
+
+        if ($row = $result->fetch_array()) {
             return $row;
         }
 
