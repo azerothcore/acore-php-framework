@@ -7,7 +7,7 @@ trait SoapTrait {
     protected $soapCli;
 
     public function executeCommand($command) {
-        $this->getSoapCli()->executeCommand($command);
+        return $this->getSoapCli()->executeCommand($command);
     }
 
     /**
