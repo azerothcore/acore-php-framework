@@ -41,7 +41,7 @@ class RList extends Provider {
                 A::V($conf, "db_auth_host"), A::V($conf, "db_auth_name"), A::V($conf, "db_auth_user"), A::V($conf, "db_auth_pass"), A::V($conf, "db_auth_port"), A::V($conf, "db_auth_socket")
         );
 
-        $_this = new self($realmlist, $authDb, A::V($conf, "modules"), $conf);
+        $_this = new static($realmlist, $authDb, A::V($conf, "modules"), $conf);
 
         return $_this;
     }

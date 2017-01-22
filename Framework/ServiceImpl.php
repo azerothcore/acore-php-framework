@@ -22,7 +22,7 @@ class ServiceImpl extends Service {
     }
 
     public static function createByConf($conf, $name = "") {
-        parent::createByConf($conf, $name);
+        return parent::createByConf($conf, $name);
     }
 
 }

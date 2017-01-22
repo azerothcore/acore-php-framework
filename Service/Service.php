@@ -16,7 +16,7 @@ class Service extends Provider {
     protected $name;
 
     public static function createByConf($conf, $name = "") {
-        return new self($conf, $name);
+        return new static($conf, $name);
     }
 
     public function __construct(Conf $conf, $name = "") {

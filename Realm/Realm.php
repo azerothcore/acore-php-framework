@@ -63,7 +63,7 @@ class Realm extends Provider implements SoapProvider, WorldDBProvider, CharDBPro
             );
         }
 
-        $_this = new self($realmName, $charDB, A::V($conf, "modules"), $worldDB, $authDB, $soapCli);
+        $_this = new static($realmName, $charDB, A::V($conf, "modules"), $worldDB, $authDB, $soapCli);
 
         return $_this;
     }
