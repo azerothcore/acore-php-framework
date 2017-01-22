@@ -15,7 +15,8 @@ class ConfDef extends Conf {
         ],
         "realm" => [
             \ACore\Account\AccountSoap::class,
-            \ACore\Creature\CreatureTemplate::class
+            \ACore\Creature\CreatureTmplMgr::class,
+            \ACore\Characters\CharactersMgr::class
         ],
     ];
 

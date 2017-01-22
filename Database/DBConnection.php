@@ -22,4 +22,79 @@ abstract class DBConnection {
         return $this->_mysqli;
     }
 
+    public function getVar($query) {
+        $res = $this->query($query);
+        if ($res) {
+            $val = $res->fetch_array();
+            return $val[0];
+        }
+
+        return $res;
+    }
+
+    public function query($query) {
+        return $this->getConn()->query($query);
+    }
+
+    public function escapeString($string) {
+        return $this->getConn()->escape_string($string);
+    }
+
+    /* [TODO]
+      public function queryStmt() {
+
+      }
+     */
+
+    public function getSingleObj($class, $query) {
+        $res = $this->query($query);
+        if ($res)
+            return $res->fetch_object($class);
+
+        return $res;
+    }
+
+    public function getSingleArrayAssoc($query) {
+        $res = $this->query($query);
+        if ($res)
+            return $res->fetch_assoc();
+
+        return $res;
+    }
+
+    public function getSingleArray($query) {
+        $res = $this->query($query);
+        if ($res)
+            return $res->fetch_array();
+
+        return $res;
+    }
+
+    public function getAllObjects($class, $query) {
+        $result = $this->query($query);
+
+        $resArray = array();
+        while ($obj = $result->fetch_object($class)) {
+            $resArray[] = $obj;
+        }
+
+        return $resArray;
+    }
+
+    public function getAllArrayAssoc($query) {
+        $res = $this->query($query);
+        if ($res)
+            return $res->fetch_all(MYSQLI_ASSOC);
+
+        return $res;
+    }
+
+    public function getAllArray($query) {
+        $res = $this->query($query);
+        if ($res)
+            return $res->fetch_all(MYSQLI_NUM);
+
+        return $res;
+    }
+
 }

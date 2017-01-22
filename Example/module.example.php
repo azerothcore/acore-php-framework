@@ -12,14 +12,12 @@ class ExampleModule extends \ACore\Realmlist\RListModule {
     }
 
     public function getAccountsHigherThanFive() {
-        $conn = $this->getAuthDB()->getConn();
+        $db = $this->getAuthDB();
 
-        $result = $conn->query(""
+        return $db->getAllObjects(ACore\Account\Account::class,""
                 . "SELECT * "
                 . "FROM account "
                 . "WHERE id > 5");
-
-        return $result->fetch_all();
     }
 
 }

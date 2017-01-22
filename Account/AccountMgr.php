@@ -2,10 +2,10 @@
 
 namespace ACore\Account;
 
-use \ACore\Realmlist\RListModule;
-use \ACore\Realmlist\RList;
+use ACore\Auth\AuthDBModule;
+use ACore\Realmlist\RList;
 
-class AccountMgr extends RListModule {
+class AccountMgr extends AuthDBModule {
 
     /**
      * Verify account and returns user info
@@ -15,39 +15,48 @@ class AccountMgr extends RListModule {
      * @return Array || NULL
      */
     public function verifyAccount($username, $password) {
-        $conn = $this->getAuthDB()->getConn();
-        $_username = $conn->escape_string($username);
-        $_password = $conn->escape_string($password);
+        $authDB = $this->getAuthDB();
+        $_username = $authDB->escapeString($username);
+        $_password = $authDB->escapeString($password);
 
         $enc_password = sha1(strtoupper($_username) . ':' . strtoupper($_password));
 
-        $result = $conn->query(""
-                . "SELECT * "
-                . "FROM account "
-                . "WHERE LOWER(username) = LOWER('" . $_username . "') AND sha_pass_hash = '" . $enc_password . "'");
-
-        if ($row = $result->fetch_array()) {
-            return $row;
-        }
-
-        return NULL;
+        return $authDB->getSingleObj(
+                        Account::class, "SELECT * "
+                        . "FROM account "
+                        . "WHERE LOWER(username) = LOWER('" . $_username . "') AND sha_pass_hash = '" . $enc_password . "'");
     }
 
+    /**
+     * 
+     * @param string $username
+     * @return Account
+     */
     public function getAccountByName($username) {
-        $conn = $this->getAuthDB()->getConn();
+        $authDB = $this->getAuthDB();
+        $_username = $authDB->escapeString($username);
 
-        $_username = $conn->escape_string($username);
+        return $authDB->getSingleObj(
+                        Account::class, "SELECT * "
+                        . "FROM account "
+                        . "WHERE LOWER(username) = LOWER('" . $_username . "');");
+    }
 
-        $result = $conn->query(""
-                . "SELECT * "
-                . "FROM account "
-                . "WHERE LOWER(username) = LOWER('" . $_username . "');");
+    /**
+     * 
+     * @param type $username
+     * @param type $ip
+     * @param boolean $lock true|false
+     */
+    public function setAccountLock($username, $ip = '127.0.0.1', $lock = true) {
+        $authDB = $this->getAuthDB();
 
-        if ($row = $result->fetch_array()) {
-            return $row;
-        }
+        $_username = $authDB->escapeString($username);
+        $_ip = $authDB->escapeString($ip);
 
-        return NULL;
+        $_locked = $lock ? 1 : 0;
+
+        $authDB->query("UPDATE account SET last_ip='$_ip' , locked = $_locked WHERE username = '" . $_username . "';");
     }
 
     /**

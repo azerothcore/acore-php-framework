@@ -24,7 +24,7 @@ $result = $exampleModule->getAccountsHigherThanFive();
 print_r($result);
 
 // Creature Example
-$creatureTemplate = ACore\Creature\CreatureTemplate::getInstance($realm);
-$result = $creatureTemplate->getCreatureByEntry(11502); // ragnaros
+$creatureTmplMgr = ACore\Creature\CreatureTmplMgr::getInstance($realm);
+$result = $creatureTmplMgr->getCreatureByEntry(11502); // ragnaros
 
 print_r($result);

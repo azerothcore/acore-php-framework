@@ -12,10 +12,9 @@ class AccountSoap extends SoapModule {
      * @param type $password
      * @param type $email
      * @param type $addon
-     * @param type $lock
      * @return \Exception|boolean
      */
-    public function createAccountFull($name, $password, $email, $addon, $lock) {
+    public function createAccountFull($name, $password, $email, $addon) {
 
         $res = $this->createAccount($name, $password);
 
