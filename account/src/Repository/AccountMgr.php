@@ -2,7 +2,9 @@
 
 namespace ACore\Account\Repository;
 
-class AccountMgr extends \Doctrine\ORM\EntityRepository {
+use \ACore\System\EntityMgr;
+
+class AccountMgr extends EntityMgr {
 
     /**
      * Verify account and returns user info
@@ -38,6 +40,26 @@ class AccountMgr extends \Doctrine\ORM\EntityRepository {
                 ->set("locked", $lock)
                 ->where('username = :username')
                 ->setParameter("username", $username);
+    }
+    
+    /**
+     * API Alias
+     * 
+     * @param string $username
+     * @return \ACore\Account\Entity\Account
+     */
+    public function findByUsername($username) {
+        return parent::findByUsername($username);
+    }
+    
+    /**
+     * API Alias
+     * 
+     * @param int $id
+     * @return \ACore\Account\Entity\Account
+     */
+    public function findById($id) {
+        return parent::findById($id);
     }
 
 }

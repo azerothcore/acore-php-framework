@@ -5,7 +5,7 @@ namespace ACore\Account\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ACore\Account\Entity\AccountMgr
+ * ACore\Account\Entity\Account
  * 
  * @ORM\Entity(repositoryClass="ACore\Account\Repository\AccountMgr")
  * @ORM\Table(name="account")

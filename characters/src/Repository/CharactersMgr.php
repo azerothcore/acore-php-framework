@@ -2,6 +2,8 @@
 
 namespace ACore\Characters\Repository;
 
-class CharactersMgr extends \Doctrine\ORM\EntityRepository {
+use \ACore\System\EntityMgr;
+
+class CharactersMgr extends EntityMgr {
     
 }

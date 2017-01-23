@@ -2,6 +2,8 @@
 
 namespace ACore\Creature\Repository;
 
-class CreatureTmplMgr extends \Doctrine\ORM\EntityRepository {
+use \ACore\System\EntityMgr;
+
+class CreatureTmplMgr extends EntityMgr {
     
 }
