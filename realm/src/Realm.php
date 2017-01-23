@@ -71,22 +71,22 @@ class Realm extends Provider implements SoapProvider, WorldDBProvider, CharDBPro
     public function registerModule(Module $module) {
         if ($module instanceof RealmModule) {
             $module->setRealm($this);
-        } else {
-            if ($module instanceof AuthDBProvider) {
-                $module->setAuthDB($this->getAuthDB());
-            }
+        }
 
-            if ($module instanceof CharDBProvider) {
-                $module->setCharDB($this->getCharDB());
-            }
+        if ($module instanceof AuthDBProvider) {
+            $module->setAuthDB($this->getAuthDB());
+        }
 
-            if ($module instanceof WorldDBProvider) {
-                $module->setWorldDB($this->getWorldDB());
-            }
+        if ($module instanceof CharDBProvider) {
+            $module->setCharDB($this->getCharDB());
+        }
 
-            if ($module instanceof SoapProvider && $this->getSoapCli()) {
-                $module->setSoapCli($this->getSoapCli());
-            }
+        if ($module instanceof WorldDBProvider) {
+            $module->setWorldDB($this->getWorldDB());
+        }
+
+        if ($module instanceof SoapProvider && $this->getSoapCli()) {
+            $module->setSoapCli($this->getSoapCli());
         }
 
         parent::registerModule($module);

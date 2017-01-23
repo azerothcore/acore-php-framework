@@ -9,11 +9,10 @@ class AccountModule extends AuthDBModule {
 
     public $accountMgr;
 
-    public function registered() {
-        parent::registered();
+    public function registered($paths = null) {
+        parent::registered(array(realpath(__DIR__ . "/Entity/")));
 
-        $em = $this->getAuthDB()->createEm(array(realpath(__DIR__ . "/Entity/")));
-        $this->accountMgr = $em->getRepository(Entity\Account::class);
+        $this->accountMgr = $this->getAuthEM()->getRepository(Entity\Account::class);
     }
 
     /**

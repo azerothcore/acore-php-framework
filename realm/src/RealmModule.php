@@ -4,8 +4,15 @@ namespace ACore\Realm;
 
 use ACore\Realm\Realm;
 use ACore\System\Module;
+use ACore\Auth\AuthDBTrait;
+use ACore\World\WorldDBTrait;
+use ACore\Characters\CharDBTrait;
 
-abstract class RealmModule extends Module {
+abstract class RealmModule extends Module implements WorldDBProvider, CharDBProvider, AuthDBProvider {
+
+    use AuthDBTrait;
+    use WorldDBTrait;
+    use CharDBTrait;
 
     protected $realm;
 
@@ -15,6 +22,14 @@ abstract class RealmModule extends Module {
 
     public static function getInstance(Realm $realm) {
         return parent::getInstance($realm);
+    }
+
+    public function registered($paths = null) {
+        $this->createAuthEM($paths);
+        $this->createWorldEM($paths);
+        $this->createCharEM($paths);
+
+        parent::registered($paths);
     }
 
     /**

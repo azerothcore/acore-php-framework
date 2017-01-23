@@ -4,17 +4,24 @@ namespace ACore\Realmlist;
 
 use ACore\Realmlist\RList;
 use ACore\System\Module;
+use ACore\System\Provider;
+use ACore\Auth\AuthDBProvider;
+use ACore\Auth\AuthDBTrait;
 
-abstract class RListModule extends Module {
+abstract class RListModule extends Module implements AuthDBProvider {
+
+    use AuthDBTrait;
 
     protected $rList;
 
-    public function __construct() {
-        
+    public static function getInstance(Provider $rList) {
+        return parent::getInstance($rList);
     }
 
-    public static function getInstance(RList $rList) {
-        return parent::getInstance($rList);
+    public function registered($paths = null) {
+        $this->createAuthEM($paths);
+
+        parent::registered($paths);
     }
 
     public function getRList() {

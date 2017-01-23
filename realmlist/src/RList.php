@@ -66,10 +66,10 @@ class RList extends Provider {
     public function registerModule(Module $module) {
         if ($module instanceof RListModule) {
             $module->setRList($this);
-        } else {
-            if ($module instanceof AuthDBProvider) {
-                $module->setAuthDB($this->getAuthDB());
-            }
+        }
+
+        if ($module instanceof AuthDBProvider) {
+            $module->setAuthDB($this->getAuthDB());
         }
 
         parent::registerModule($module);

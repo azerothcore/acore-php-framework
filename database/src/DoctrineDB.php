@@ -19,8 +19,16 @@ class DoctrineDB {
         );
     }
 
-    public function createEm($paths) {
+    /**
+     * 
+     * @param type $paths
+     * @return EntityManager
+     */
+    public function createEm($paths = array()) {
         $isDevMode = true;
+
+        if ($paths == null)
+            $paths = array();
 
         $config = Setup::createAnnotationMetadataConfiguration(
                         $paths, $isDevMode, null, null, false

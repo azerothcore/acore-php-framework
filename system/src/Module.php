@@ -14,7 +14,7 @@ abstract class Module extends Bundle {
         return get_called_class();
     }
 
-    public function registered() {
+    public function registered($arg1 = null) {
         
     }
 

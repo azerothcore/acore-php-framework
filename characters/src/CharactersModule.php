@@ -9,11 +9,10 @@ class CharactersModule extends CharDBModule {
 
     public $charsMgr;
 
-    public function registered() {
-        parent::registered();
+    public function registered($paths = null) {
+        parent::registered(array(realpath(__DIR__ . "/Entity/")));
 
-        $em = $this->getCharDB()->createEm(array(realpath(__DIR__ . "/Entity/")));
-        $this->charsMgr = $em->getRepository(Entity\Character::class);
+        $this->charsMgr = $this->getCharEM()->getRepository(Entity\Character::class);
     }
 
     /**
