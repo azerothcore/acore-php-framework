@@ -26,6 +26,8 @@ abstract class Provider extends Kernel {
     public function registerModule(Module $module) {
         $name = get_class($module);
         $this->moduleList[$name] = $module;
+        
+        $module->registered();
     }
 
     public function registerModules(Array $modules) {

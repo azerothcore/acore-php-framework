@@ -1,6 +1,6 @@
 <?php
 
-namespace ACore\Creature;
+namespace ACore\Creature\Entity;
 
 use ACore\System\Entity;
 
