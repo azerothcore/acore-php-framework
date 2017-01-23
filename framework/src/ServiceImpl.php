@@ -12,13 +12,13 @@ use ACore\Service\Conf;
  */
 class ServiceImpl extends Service {
 
-    public function __construct(Conf $conf, $name = "") {
+    public function __construct(Conf $conf, $name = "", $environment = "prod", $debug = false) {
 
         $_conf = new ConfDef();
 
         $_conf->merge($conf);
 
-        parent::__construct($_conf, $name);
+        parent::__construct($_conf, $name, $environment, $debug);
     }
 
     public static function createByConf($conf, $name = "") {

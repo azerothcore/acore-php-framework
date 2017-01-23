@@ -3,7 +3,7 @@
 namespace ACore\Creature;
 
 use ACore\World\WorldDBModule;
-use ACore\Realm\Realm;
+use ACore\System\Provider;
 
 class CreatureModule extends WorldDBModule {
 
@@ -21,7 +21,7 @@ class CreatureModule extends WorldDBModule {
      * @param \ACore\Creature\Realm $realm
      * @return CreatureModule
      */
-    public static function getInstance(Realm $realm) {
+    public static function getInstance(Provider $realm) {
         return parent::getInstance($realm);
     }
 

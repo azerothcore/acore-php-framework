@@ -81,7 +81,6 @@ class Realm extends Provider implements SoapProvider, WorldDBProvider, CharDBPro
             }
 
             if ($module instanceof WorldDBProvider) {
-                var_dump($this);
                 $module->setWorldDB($this->getWorldDB());
             }
 

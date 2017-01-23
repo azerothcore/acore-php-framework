@@ -3,7 +3,7 @@
 namespace ACore\Account;
 
 use ACore\Auth\AuthDBModule;
-use ACore\Realmlist\RList;
+use ACore\System\Provider;
 
 class AccountMgr extends AuthDBModule {
 
@@ -64,7 +64,7 @@ class AccountMgr extends AuthDBModule {
      * @param \ACore\Realmlist\RList $rList
      * @return AccountMgr
      */
-    public static function getInstance(RList $rList) {
+    public static function getInstance(Provider $rList) {
         return parent::getInstance($rList);
     }
 

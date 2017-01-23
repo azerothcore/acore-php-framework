@@ -12,19 +12,13 @@ use ACore\System\Provider;
 class Service extends Provider {
 
     protected $_rlists = array();
-    protected $conf = array();
-    protected $name;
 
     public static function createByConf($conf, $name = "") {
         return new static($conf, $name);
     }
 
-    public function __construct(Conf $conf, $name = "") {
-        $this->conf = $conf;
-        $this->name = $name;
-
-        $this->registerModules($this->conf->modules["system"]);
-
+    public function __construct(Conf $conf, $name = "", $environment = "prod", $debug = false) {
+        parent::__construct($conf, $name, $conf->modules["system"], $environment, $debug);
         $rList = $conf->rList;
 
         foreach ($rList as $realmlist => $rListInfo) {

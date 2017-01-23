@@ -20,6 +20,7 @@ class DoctrineDB {
         $isDevMode = false;
 
         $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+        
         return \Doctrine\ORM\EntityManager::create($this->connectionParams, $config);
     }
     

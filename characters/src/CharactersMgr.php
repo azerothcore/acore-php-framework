@@ -2,6 +2,8 @@
 
 namespace ACore\Characters;
 
+use ACore\System\Provider;
+
 class CharactersMgr extends CharDBModule {
 
     public function countCharacters($user_id) {
@@ -28,10 +30,10 @@ class CharactersMgr extends CharDBModule {
 
     /**
      * 
-     * @param \ACore\Realmlist\RList $rList
+     * @param \ACore\Realm\Realm $realm
      * @return CharactersMgr
      */
-    public static function getInstance(Realm $realm) {
+    public static function getInstance(Provider $realm) {
         return parent::getInstance($realm);
     }
 
