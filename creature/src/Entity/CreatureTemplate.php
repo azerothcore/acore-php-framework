@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ACore\Creature\CreatureTemplate
  * 
- * @ORM\Table(name="test")
+ * @ORM\Table(name="creature_template")
  * @ORM\Entity(repositoryClass="ACore\Creature\Repository\CreatureTmplMgr")
  */
 class CreatureTemplate
