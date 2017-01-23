@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Framework/bootstrap.php";
+require_once "../../autoload.php";
 
 use ACore\Framework\ServiceImpl;
 
