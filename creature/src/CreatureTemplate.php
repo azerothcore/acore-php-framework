@@ -2,13 +2,26 @@
 
 namespace ACore\Creature;
 
-use ACore\System\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
-class CreatureTemplate extends Entity {
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="creature_template")
+ */
+class CreatureTemplate {
+
     public $entry;
-    
+
+    public function __construct($entry) {
+        $this->entry = $entry;
+    }
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     */
     public function getEntry() {
         return $this->entry;
     }
-}
 
+}

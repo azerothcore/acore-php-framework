@@ -2,8 +2,8 @@
 
 namespace ACore\World;
 
-use \ACore\Database\DBConnection;
+use \ACore\Database\DoctrineDB;
 
-class WorldDB extends DBConnection {
+class WorldDB extends DoctrineDB {
     
 }

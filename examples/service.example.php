@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../autoload.php";
+require_once "../../../autoload.php";
 
 use ACore\Framework\ServiceImpl;
 
@@ -24,7 +24,7 @@ $result = $exampleModule->getAccountsHigherThanFive();
 print_r($result);
 
 // Creature Example
-$creatureTmplMgr = ACore\Creature\CreatureTmplMgr::getInstance($realm);
-$result = $creatureTmplMgr->getCreatureByEntry(11502); // ragnaros
+$creatureModule = ACore\Creature\CreatureModule::getInstance($realm);
+$result = $creatureModule->getCreatureTmplMgr()->find(11502); // ragnaros
 
 print_r($result);
