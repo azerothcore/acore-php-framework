@@ -12,7 +12,7 @@ class AccountMgr extends AuthDBModule {
      * 
      * @param type $username
      * @param type $password
-     * @return Array || NULL
+     * @return Account
      */
     public function verifyAccount($username, $password) {
         $authDB = $this->getAuthDB();

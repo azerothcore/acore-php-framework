@@ -3,6 +3,7 @@
 namespace ACore\Database;
 
 abstract class DBConnection {
+    
 
     /**
      *
@@ -12,6 +13,21 @@ abstract class DBConnection {
 
     public function __construct($host, $name, $user = "", $pass = "", $port = 3306, $socket = "") {
         $this->_mysqli = new \mysqli($host, $user, $pass, $name, intval($port), $socket);
+    }
+    
+    public function __destruct()
+    {
+        $this->disconnect();
+    }
+    
+    public function disconnect()
+    {
+        if ($this->_mysqli === null) {
+            return false;
+        }
+        $this->_mysqli->close();
+        $this->_mysqli = null;
+        return true;
     }
 
     /**

@@ -1,0 +1,39 @@
+{
+    "name": "acore-php/acore-php",
+    "description": "Full acore-php framework",
+    "keywords": ["acore", "php", "framework"],
+    "homepage": "http://www.azerothcore.org",
+    "type": "library",
+    "license": "AGPL3",
+    "authors": [
+        {
+            "name": "Yehonal",
+            "email": "yehonal.azeroth@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4,>=2.4.5",
+        "symfony/doctrine-bridge": "~3.2,>=3.2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "ACore\\Account\\": "account/src/",
+            "ACore\\Auth\\": "auth/src/",
+            "ACore\\Characters\\": "characters/src/",
+            "ACore\\Creature\\": "creature/src/",
+            "ACore\\Database\\": "database/src/",
+            "ACore\\Defines\\": "defines/src/",
+            "ACore\\Framework\\": "framework/src/",
+            "ACore\\GameMail\\": "game-mail/src/",
+            "ACore\\Realm\\": "realm/src/",
+            "ACore\\Realmlist\\": "realmlist/src/",
+            "ACore\\Service\\": "service/src/",
+            "ACore\\Soap\\": "soap/src/",
+            "ACore\\System\\": "system/src/",
+            "ACore\\Utils\\": "utils/src/",
+            "ACore\\World\\": "world/src/"
+        }
+    }
+}
