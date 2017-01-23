@@ -2,6 +2,9 @@
 
 namespace ACore\Database;
 
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
+
 class DoctrineDB {
 
     protected $connectionParams;
@@ -15,14 +18,16 @@ class DoctrineDB {
             'driver' => 'pdo_mysql',
         );
     }
-    
-    public function createEm($paths) {
-        $isDevMode = false;
 
-        $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-        
-        return \Doctrine\ORM\EntityManager::create($this->connectionParams, $config);
+    public function createEm($paths) {
+        $isDevMode = true;
+
+        $config = Setup::createAnnotationMetadataConfiguration(
+                        $paths, $isDevMode, null, null, false
+        );
+        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+
+        return EntityManager::create($this->connectionParams, $config);
     }
-    
 
 }

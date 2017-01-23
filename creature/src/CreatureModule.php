@@ -12,7 +12,7 @@ class CreatureModule extends WorldDBModule {
     public function registered() {
         parent::registered();
         
-        $em=$this->getWorldDB()->createEm(array(__DIR__));
+        $em=$this->getWorldDB()->createEm(array(realpath(__DIR__."/Entity/")));
         $this->creatureTmplMgr = $em->getRepository(Entity\CreatureTemplate::class);
     }
 
@@ -27,7 +27,7 @@ class CreatureModule extends WorldDBModule {
 
     /**
      * 
-     * @return CreatureTmplMgr
+     * @return Repository\CreatureTmplMgr
      */
     public function getCreatureTmplMgr() {
         return $this->creatureTmplMgr;
