@@ -13,7 +13,9 @@ abstract class Module extends Bundle {
     public static function getFullName() {
         return get_called_class();
     }
-    
-    public function registered() {}
+
+    public function registered() {
+        
+    }
 
 }

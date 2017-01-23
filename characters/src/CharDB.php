@@ -2,8 +2,8 @@
 
 namespace ACore\Characters;
 
-use \ACore\Database\DBConnection;
+use ACore\Database\DoctrineDB;
 
-class CharDB extends DBConnection {
+class CharDB extends DoctrineDB {
     
 }

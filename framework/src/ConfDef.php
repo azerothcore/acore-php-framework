@@ -11,13 +11,14 @@ class ConfDef extends Conf {
     public $modules = [
         "system" => [],
         "realmlist" => [
-            \ACore\Account\AccountMgr::class
+            \ACore\Account\AccountModule::class
         ],
         "realm" => [
             \ACore\Account\AccountSoap::class,
             \ACore\GameMail\MailSoap::class,
             \ACore\Creature\CreatureModule::class,
-            \ACore\Characters\CharactersMgr::class
+            \ACore\Characters\CharactersModule::class,
+            \ACore\Realm\RealmSoap::class,
         ],
     ];
 

@@ -2,26 +2,43 @@
 
 namespace ACore\Creature\Entity;
 
-use ACore\System\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
-class Creature extends Entity {
-    public $guid;
-    public $id;
-    
+/**
+ * ACore\Creature\Entity\CreatureTemplate
+ * 
+ * @ORM\Entity(repositoryClass="ACore\Creature\Repository\CreatureMgr")
+ * @ORM\Table(name="creature")
+ */
+class Creature {
+
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="guid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+    public $guid;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     *
+     */
+    public $id;
+
+    public function __construct($guid) {
+        $this->guid = $guid;
+    }
+
     public function getGuid() {
         return $this->guid;
     }
-    
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
+
     public function getId() {
         return $this->id;
     }
-}
 
+}

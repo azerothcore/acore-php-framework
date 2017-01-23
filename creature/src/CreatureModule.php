@@ -8,12 +8,15 @@ use ACore\System\Provider;
 class CreatureModule extends WorldDBModule {
 
     public $creatureTmplMgr;
+    public $creatureMgr;
 
     public function registered() {
         parent::registered();
-        
-        $em=$this->getWorldDB()->createEm(array(realpath(__DIR__."/Entity/")));
+
+        $em = $this->getWorldDB()->createEm(array(realpath(__DIR__ . "/Entity/")));
+
         $this->creatureTmplMgr = $em->getRepository(Entity\CreatureTemplate::class);
+        $this->creatureMgr = $em->getRepository(Entity\Creature::class);
     }
 
     /**
@@ -31,6 +34,14 @@ class CreatureModule extends WorldDBModule {
      */
     public function getCreatureTmplMgr() {
         return $this->creatureTmplMgr;
+    }
+
+    /**
+     * 
+     * @return Repository\CreatureMgr
+     */
+    public function getCreatureMgr() {
+        return $this->creatureMgr;
     }
 
 }

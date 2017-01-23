@@ -2,8 +2,8 @@
 
 namespace ACore\Auth;
 
-use \ACore\Database\DBConnection;
+use ACore\Database\DoctrineDB;
 
-class AuthDB extends DBConnection {
-
+class AuthDB extends DoctrineDB {
+    
 }
