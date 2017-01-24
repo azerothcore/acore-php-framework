@@ -2,9 +2,9 @@
 
 namespace ACore\Account\Repository;
 
-use \ACore\System\EntityMgr;
+use \ACore\System\Repository;
 
-class AccountMgr extends EntityMgr {
+class AccountMgr extends Repository {
 
     /**
      * Verify account and returns user info
@@ -21,7 +21,7 @@ class AccountMgr extends EntityMgr {
         return $authDB->createQueryBuilder("SELECT * "
                                 . "FROM account "
                                 . "WHERE LOWER(username) = LOWER(:username) AND sha_pass_hash = :password")
-                        ->setParameter("username", $_username)
+                        ->setParameter("username", $username)
                         ->setParameter("password", $enc_password)->getQuery()->getResult();
     }
 
@@ -41,7 +41,7 @@ class AccountMgr extends EntityMgr {
                 ->where('username = :username')
                 ->setParameter("username", $username);
     }
-    
+
     /**
      * API Alias
      * 
@@ -51,7 +51,7 @@ class AccountMgr extends EntityMgr {
     public function findByUsername($username) {
         return parent::findByUsername($username);
     }
-    
+
     /**
      * API Alias
      * 

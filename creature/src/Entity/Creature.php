@@ -29,10 +29,6 @@ class Creature {
      */
     public $id;
 
-    public function __construct($guid) {
-        $this->guid = $guid;
-    }
-
     public function getGuid() {
         return $this->guid;
     }

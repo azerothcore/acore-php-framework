@@ -2,8 +2,8 @@
 
 namespace ACore\Characters\Repository;
 
-use \ACore\System\EntityMgr;
+use \ACore\System\Repository;
 
-class CharactersMgr extends EntityMgr {
+class CharactersMgr extends Repository {
     
 }

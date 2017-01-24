@@ -35,10 +35,6 @@ class Character {
      */
     public $name;
 
-    public function __construct($guid) {
-        $this->guid = $guid;
-    }
-
     public function getGuid() {
         return $this->guid;
     }

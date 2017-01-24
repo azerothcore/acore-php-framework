@@ -42,10 +42,6 @@ class Account {
      */
     public $email;
 
-    public function __construct($id) {
-        $this->id = $id;
-    }
-
     public function getId() {
         return $this->id;
     }

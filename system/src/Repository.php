@@ -2,14 +2,14 @@
 
 namespace ACore\System;
 
-class EntityMgr extends \Doctrine\ORM\EntityRepository {
-    
+class Repository extends \Doctrine\ORM\EntityRepository {
+
     /**
      * Helper function for direct queries
      * @param type $query
      */
     public function query($query) {
-        return $this->createQueryBuilder($query)->getQuery()->getResult();
+        return $this->getEntityManager()->getConnection()->query($query);
     }
-}
 
+}
