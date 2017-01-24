@@ -57,11 +57,20 @@ class DoctrineDB {
         return $this->em->getConnection();
     }
 
-    public function getVar($query) {
-        $this->Conn()->query($query)->fetchColumn();
+    /**
+     * Shortcut for query
+     * @param type $query
+     * @return \Doctrine\DBAL\Driver\Statement
+     */
+    public function query($query, $params = array(), $types = array()) {
+        return $this->Conn()->executeQuery($query, $params, $types);
     }
 
-    public function fetchSingleObj($class, $query) {
+    public function getVar($query, $params = array(), $types = array()) {
+        return $this->query($query, $params, $types)->fetchColumn();
+    }
+
+    public function fetchSingleObj($class, $query, $params = array(), $types = array()) {
         $res = $this->fetchAllObj($class, $query);
 
         if ($res)
@@ -70,13 +79,10 @@ class DoctrineDB {
         return $res;
     }
 
-    public function fetchAllObj($class, $query) {
-        $stmt=$this->Conn()->prepare($query);
-        
-        if (!$stmt->execute())
-            return false;
-        
-        return $stmt->fetchAll(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, $class);
+    public function fetchAllObj($class, $query, $params = array(), $types = array()) {
+        $stmt = $this->query($query, $params, $types);
+
+        return $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
     }
 
 }

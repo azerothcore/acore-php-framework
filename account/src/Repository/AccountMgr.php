@@ -48,8 +48,8 @@ class AccountMgr extends Repository {
      * @param string $username
      * @return \ACore\Account\Entity\Account
      */
-    public function findByUsername($username) {
-        return parent::findByUsername($username);
+    public function findOneByUsername($username) {
+        return parent::findOneByUsername($username);
     }
 
     /**
@@ -58,8 +58,8 @@ class AccountMgr extends Repository {
      * @param int $id
      * @return \ACore\Account\Entity\Account
      */
-    public function findById($id) {
-        return parent::findById($id);
+    public function findOneById($id) {
+        return $this->find($id);
     }
 
 }

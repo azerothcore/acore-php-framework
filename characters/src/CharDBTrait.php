@@ -19,7 +19,7 @@ trait CharDBTrait {
         $this->charDB = $charDB;
     }
 
-    public function createCharEM(Array $paths = array()) {
+    public function createCharEM($paths = null) {
         $this->charEM = $this->charDB->createEm($paths);
     }
 

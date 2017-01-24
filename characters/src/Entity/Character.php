@@ -22,9 +22,9 @@ class Character {
     public $guid;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="account", type="string")
+     * @ORM\Column(name="account", type="integer")
      */
     public $account;
 

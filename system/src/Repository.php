@@ -7,9 +7,23 @@ class Repository extends \Doctrine\ORM\EntityRepository {
     /**
      * Helper function for direct queries
      * @param type $query
+     * 
+     * @return \Doctrine\DBAL\Driver\Statement
      */
-    public function query($query) {
-        return $this->getEntityManager()->getConnection()->query($query);
+    public function query($query, $params = array(), $types = array()) {
+        return $this->getEntityManager()->getConnection()->executeQuery($query, $params, $types);
+    }
+
+    /**
+     * 
+     * @return \Doctrine\DBAL\Connection
+     */
+    public function getDBConn() {
+        return $this->getEntityManager()->getConnection();
+    }
+
+    public function getEM() {
+        return $this->getEntityManager();
     }
 
 }
