@@ -1,21 +1,21 @@
 <?php
 
-namespace ACore\Auth;
+namespace ACore\AuthDb;
 
-trait AuthDBTrait {
+trait AuthDbTrait {
 
     protected $authDB;
     protected $authEM;
 
     /**
      * 
-     * @return AuthDB
+     * @return AuthDb
      */
-    public function getAuthDB() {
+    public function getAuthDb() {
         return $this->authDB;
     }
 
-    public function setAuthDB(AuthDB $authDB) {
+    public function setAuthDb(AuthDb $authDB) {
         $this->authDB = $authDB;
         return $this;
     }

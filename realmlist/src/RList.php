@@ -3,12 +3,12 @@
 namespace ACore\Realmlist;
 
 use ACore\Realm\Realm;
-use ACore\Auth\AuthDB;
-use ACore\Characters\CharDB;
-use ACore\World\WorldDB;
+use ACore\AuthDb\AuthDb;
+use ACore\CharDb\CharDb;
+use ACore\WorldDb\WorldDb;
 use ACore\System\Provider;
 use ACore\System\Module;
-use ACore\Auth\AuthDBProvider;
+use ACore\AuthDb\AuthDbProvider;
 use ACore\Utils\AUtils as A;
 
 /**
@@ -21,7 +21,7 @@ class RList extends Provider {
     protected $realmlist;
     protected $conf;
 
-    public function __construct($realmlist, AuthDB $authDB, $modules = array(), $conf = array()) {
+    public function __construct($realmlist, AuthDb $authDB, $modules = array(), $conf = array()) {
         $this->authDB = $authDB;
         $this->realmlist = $realmlist;
         $this->conf = $conf;
@@ -37,7 +37,7 @@ class RList extends Provider {
     }
 
     public static function createByConf($conf, $realmlist) {
-        $authDb = new AuthDB(
+        $authDb = new AuthDb(
                 A::V($conf, "db_auth_host"), A::V($conf, "db_auth_name"), A::V($conf, "db_auth_user"), A::V($conf, "db_auth_pass"), A::V($conf, "db_auth_port"), A::V($conf, "db_auth_socket")
         );
 
@@ -53,7 +53,7 @@ class RList extends Provider {
      * @param type $worldDB
      * @return ACore\Realm\Realm
      */
-    public function registerRealm($name, CharDB $charDB, WorldDB $worldDB, $modules) {
+    public function registerRealm($name, CharDb $charDB, WorldDb $worldDB, $modules) {
         $this->_realms[$name] = new Realm($name, $charDB, $worldDB, $this->authDB, $modules);
         return $this->_realms[$name];
     }
@@ -68,8 +68,8 @@ class RList extends Provider {
             $module->setRList($this);
         }
 
-        if ($module instanceof AuthDBProvider) {
-            $module->setAuthDB($this->getAuthDB());
+        if ($module instanceof AuthDbProvider) {
+            $module->setAuthDb($this->getAuthDb());
         }
 
         parent::registerModule($module);
@@ -83,6 +83,17 @@ class RList extends Provider {
         }
 
         return parent::getModule($className);
+    }
+
+    /**
+     * Get modules from realmlist and its realms
+     */
+    public function getAllModules() {
+        $modules = $this->moduleList;
+        foreach ($this->_realms as $realm)
+            $modules = array_merge($modules, $realm->getAllModules());
+
+        return $modules;
     }
 
     /**
@@ -100,13 +111,13 @@ class RList extends Provider {
 
     /**
      * 
-     * @return ACore\Auth\AuthDB
+     * @return ACore\AuthDb\AuthDb
      */
-    public function getAuthDB() {
+    public function getAuthDb() {
         return $this->authDB;
     }
 
-    public function setAuthDB($authDB) {
+    public function setAuthDb($authDB) {
         $this->authDB = $authDB;
         return $this;
     }
@@ -131,6 +142,14 @@ class RList extends Provider {
     public function setRealmlist($realmlist) {
         $this->realmlist = $realmlist;
         return $this;
+    }
+
+    /**
+     *
+     * @Route("/{realm}/{module}/{route}")
+     */
+    public function getRealmRoute($realm, $module, $route) {
+        return $this->getRealm($realm)->getRoute($module, $route);
     }
 
 }

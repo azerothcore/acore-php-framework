@@ -1,21 +1,21 @@
 <?php
 
-namespace ACore\Characters;
+namespace ACore\CharDb;
 
-trait CharDBTrait {
+trait CharDbTrait {
 
     protected $charDB;
     protected $charEM;
 
     /**
      * 
-     * @return CharDB
+     * @return CharDb
      */
-    public function getCharDB() {
+    public function getCharDb() {
         return $this->charDB;
     }
 
-    public function setCharDB(CharDB $charDB) {
+    public function setCharDb(CharDb $charDB) {
         $this->charDB = $charDB;
     }
 

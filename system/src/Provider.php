@@ -5,6 +5,7 @@ namespace ACore\System;
 use ACore\System\Module;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 /**
  *  Dependency injector/container
@@ -46,8 +47,31 @@ abstract class Provider extends Kernel {
         }
     }
 
+    /**
+     * 
+     * @param type $className
+     * @return \ACore\System\Module
+     */
     public function getModule($className) {
         return $this->moduleList[$className];
+    }
+    
+    public function getAllModules() {
+        return $this->moduleList;
+    }
+    
+    /**
+     *
+     * @Route("/{module}/{route}")
+     */
+    public function getRoute($module,$route) {
+        $nameConverter = new CamelCaseToSnakeCaseNameConverter();
+
+        $name= ucfirst($nameConverter->denormalize($module)); // under_score -> to snakeCase -> to CamelCase
+        
+        $fullName="ACore\\".$name."\\".$name."Module";
+        
+        return $this->getModule($fullName)->getRouting();
     }
 
 }

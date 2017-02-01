@@ -2,20 +2,20 @@
 
 namespace ACore\World;
 
-trait WorldDBTrait {
+trait WorldDbTrait {
 
     protected $worldDB;
     protected $worldEM;
 
     /**
      * 
-     * @return WorldDB
+     * @return WorldDb
      */
-    public function getWorldDB() {
+    public function getWorldDb() {
         return $this->worldDB;
     }
 
-    public function setWorldDB(WorldDB $worldDB) {
+    public function setWorldDb(WorldDb $worldDB) {
         $this->worldDB = $worldDB;
         return $this;
     }

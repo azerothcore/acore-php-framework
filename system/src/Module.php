@@ -17,5 +17,9 @@ abstract class Module extends Bundle {
     public function registered($arg1 = null) {
         
     }
+    
+    public function getRouting() {
+        print_r($this->container->get('router')->getRouteCollection()->all());
+    }
 
 }

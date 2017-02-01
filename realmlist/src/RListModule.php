@@ -5,12 +5,12 @@ namespace ACore\Realmlist;
 use ACore\Realmlist\RList;
 use ACore\System\Module;
 use ACore\System\Provider;
-use ACore\Auth\AuthDBProvider;
-use ACore\Auth\AuthDBTrait;
+use ACore\AuthDb\AuthDbProvider;
+use ACore\AuthDb\AuthDbTrait;
 
-abstract class RListModule extends Module implements AuthDBProvider {
+abstract class RListModule extends Module implements AuthDbProvider {
 
-    use AuthDBTrait;
+    use AuthDbTrait;
 
     protected $rList;
 
@@ -35,10 +35,10 @@ abstract class RListModule extends Module implements AuthDBProvider {
 
     /**
      * 
-     * @return \ACore\Auth\AuthDB
+     * @return \ACore\AuthDb\AuthDb
      */
-    public function getAuthDB() {
-        return $this->rList->getAuthDB();
+    public function getAuthDb() {
+        return $this->rList->getAuthDb();
     }
 
 }

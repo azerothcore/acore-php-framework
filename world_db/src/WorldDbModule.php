@@ -2,13 +2,13 @@
 
 namespace ACore\World;
 
-use ACore\World\WorldDBProvider;
-use ACore\World\WorldDBTrait;
+use ACore\WorldDb\WorldDbProvider;
+use ACore\WorldDb\WorldDbTrait;
 use ACore\System\Module;
 
-abstract class WorldDBModule extends Module implements WorldDBProvider {
+abstract class WorldDbModule extends Module implements WorldDbProvider {
 
-    use WorldDBTrait;
+    use WorldDbTrait;
 
     public function registered($paths = null) {
         $this->createWorldEM($paths);

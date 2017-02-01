@@ -2,10 +2,10 @@
 
 namespace ACore\Characters;
 
-use ACore\Characters\CharDBModule;
+use ACore\CharDb\CharDbModule;
 use ACore\System\Provider;
 
-class CharactersModule extends CharDBModule {
+class CharactersModule extends CharDbModule {
 
     public $charsMgr;
 

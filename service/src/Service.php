@@ -2,9 +2,10 @@
 
 namespace ACore\Service;
 
-use ACore\Auth\AuthDB;
+use ACore\AuthDb\AuthDb;
 use ACore\Realmlist\RList;
 use ACore\System\Provider;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Registry Pattern & Dependency Container for RLists & Modules
@@ -32,10 +33,10 @@ class Service extends Provider {
     /**
      * 
      * @param type $name
-     * @param \ACore\Auth\AuthDB $authDB
+     * @param \ACore\AuthDb\AuthDb $authDB
      * @return ACore\Realm\RList
      */
-    public function registerRList($realmlist, AuthDB $authDB, $modules = array()) {
+    public function registerRList($realmlist, AuthDb $authDB, $modules = array()) {
         $this->_rlists[$realmlist] = new RList($realmlist, $authDB, $modules);
         return $this->_rlists[$realmlist];
     }
@@ -72,6 +73,18 @@ class Service extends Provider {
     }
 
     /**
+     * Get modules from service and its realmlists
+     * @return Array
+     */
+    public function getAllModules() {
+        $modules = $this->moduleList;
+        foreach ($this->_rlists as $rList)
+            $modules = array_merge($modules, $rList->getAllModules());
+
+        return $modules;
+    }
+
+    /**
      * 
      * @param type $name
      * @return RList
@@ -92,6 +105,22 @@ class Service extends Provider {
      */
     public function getRealm($rListName, $realmName) {
         return $this->getRList($rListName)->getRealm($realmName);
+    }
+
+    /**
+     *
+     * @Route("/{rlist}/{realm}/{module}/{route}")
+     */
+    public function getRealmRoute($rlist, $realm, $module, $route) {
+        return $this->getRList($rlist)->getRealmRoute($realm, $module, $route);
+    }
+
+    /**
+     *
+     * @Route("/{rlist}/{module}/{route}")
+     */
+    public function getRListRoute($rlist, $module, $route) {
+        return $this->getRList($rlist)->getRoute($module, $route);
     }
 
 }

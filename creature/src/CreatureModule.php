@@ -2,10 +2,10 @@
 
 namespace ACore\Creature;
 
-use ACore\World\WorldDBModule;
+use ACore\WorldDb\WorldDbModule;
 use ACore\System\Provider;
 
-class CreatureModule extends WorldDBModule {
+class CreatureModule extends WorldDbModule {
 
     public $creatureTmplMgr;
     public $creatureMgr;

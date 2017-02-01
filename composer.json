@@ -21,20 +21,21 @@
     "autoload": {
         "psr-4": {
             "ACore\\Account\\": "account/src/",
-            "ACore\\Auth\\": "auth/src/",
+            "ACore\\AuthDb\\": "auth_db/src/",
             "ACore\\Characters\\": "characters/src/",
+            "ACore\\CharDb\\": "char_db/src/",
             "ACore\\Creature\\": "creature/src/",
             "ACore\\Database\\": "database/src/",
             "ACore\\Defines\\": "defines/src/",
             "ACore\\Framework\\": "framework/src/",
-            "ACore\\GameMail\\": "game-mail/src/",
+            "ACore\\GameMail\\": "game_mail/src/",
             "ACore\\Realm\\": "realm/src/",
             "ACore\\Realmlist\\": "realmlist/src/",
             "ACore\\Service\\": "service/src/",
             "ACore\\Soap\\": "soap/src/",
             "ACore\\System\\": "system/src/",
             "ACore\\Utils\\": "utils/src/",
-            "ACore\\World\\": "world/src/"
+            "ACore\\WorldDb\\": "world_db/src/"
         }
     }
 }

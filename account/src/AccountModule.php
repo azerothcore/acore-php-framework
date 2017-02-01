@@ -2,10 +2,10 @@
 
 namespace ACore\Account;
 
-use ACore\Auth\AuthDBModule;
+use ACore\AuthDb\AuthDbModule;
 use ACore\System\Provider;
 
-class AccountModule extends AuthDBModule {
+class AccountModule extends AuthDbModule {
 
     public $accountMgr;
 

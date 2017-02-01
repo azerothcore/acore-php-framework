@@ -2,11 +2,11 @@
 
 namespace ACore\World;
 
-interface WorldDBProvider {
+interface WorldDbProvider {
 
-    public function getWorldDB();
+    public function getWorldDb();
 
-    public function setWorldDB(WorldDB $worldDB);
+    public function setWorldDb(WorldDb $worldDB);
 
     public function createWorldEM($paths = null);
 

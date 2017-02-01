@@ -4,15 +4,15 @@ namespace ACore\Realm;
 
 use ACore\Realm\Realm;
 use ACore\System\Module;
-use ACore\Auth\AuthDBTrait;
-use ACore\World\WorldDBTrait;
-use ACore\Characters\CharDBTrait;
+use ACore\AuthDb\AuthDbTrait;
+use ACore\WorldDb\WorldDbTrait;
+use ACore\CharDb\CharDbTrait;
 
-abstract class RealmModule extends Module implements WorldDBProvider, CharDBProvider, AuthDBProvider {
+abstract class RealmModule extends Module implements WorldDbProvider, CharDbProvider, AuthDbProvider {
 
-    use AuthDBTrait;
-    use WorldDBTrait;
-    use CharDBTrait;
+    use AuthDbTrait;
+    use WorldDbTrait;
+    use CharDbTrait;
 
     protected $realm;
 
@@ -47,26 +47,26 @@ abstract class RealmModule extends Module implements WorldDBProvider, CharDBProv
 
     /**
      * 
-     * @return \ACore\Auth\AuthDB
+     * @return \ACore\AuthDb\AuthDb
      */
-    public function getAuthDB() {
-        return $this->realm->getAuthDB();
+    public function getAuthDb() {
+        return $this->realm->getAuthDb();
     }
 
     /**
      * 
-     * @return \ACore\Characters\CharDB
+     * @return \ACore\CharDb\CharDb
      */
-    public function getCharDB() {
-        return $this->realm->getCharDB();
+    public function getCharDb() {
+        return $this->realm->getCharDb();
     }
 
     /**
      * 
-     * @return \ACore\World\WorldDB
+     * @return \ACore\WorldDb\WorldDb
      */
-    public function getWorldDB() {
-        return $this->realm->getWorldDB();
+    public function getWorldDb() {
+        return $this->realm->getWorldDb();
     }
 
 }
