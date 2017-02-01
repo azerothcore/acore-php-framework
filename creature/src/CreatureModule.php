@@ -4,11 +4,21 @@ namespace ACore\Creature;
 
 use ACore\WorldDb\WorldDbModule;
 use ACore\System\Provider;
+use Symfony\Component\Routing\Route;
 
 class CreatureModule extends WorldDbModule {
 
     public $creatureTmplMgr;
     public $creatureMgr;
+
+    public function __construct() {
+        $routes = array();
+        $routes["creature_template"] = new Route('/creature_template', array(
+            '_controller' => 'CreatureTmplCtrl',
+        ));
+
+        $this->setRoutes($routes);
+    }
 
     public function registered($paths = null) {
         parent::registered(array(realpath(__DIR__ . "/Entity/")));

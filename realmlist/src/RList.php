@@ -21,12 +21,10 @@ class RList extends Provider {
     protected $realmlist;
     protected $conf;
 
-    public function __construct($realmlist, AuthDb $authDB, $modules = array(), $conf = array()) {
+    public function __construct($realmlist, AuthDb $authDB, $modules = array(), $conf = array(), $environment = "prod", $debug = false) {
         $this->authDB = $authDB;
-        $this->realmlist = $realmlist;
-        $this->conf = $conf;
 
-        $this->registerModules($modules["realmlist"]);
+        parent::__construct($realmlist, $modules["realmlist"], $conf, $environment, $debug);
 
         foreach ($this->conf["realms"] as $realm => $realmInfo) {
             if (isset($modules["realm"]) && isset($realmInfo["modules"]))
@@ -54,12 +52,15 @@ class RList extends Provider {
      * @return ACore\Realm\Realm
      */
     public function registerRealm($name, CharDb $charDB, WorldDb $worldDB, $modules) {
-        $this->_realms[$name] = new Realm($name, $charDB, $worldDB, $this->authDB, $modules);
+        $this->_realms[$name] = new Realm($name, $charDB, $modules, null, $worldDB, $this->authDB);
         return $this->_realms[$name];
     }
 
     public function registerRealmByConf($name, $conf) {
         $this->_realms[$name] = Realm::createByConf($conf, $name);
+
+        $this->getRouteCollection()->addCollection($this->getRealm($name)->getRouteCollection());
+
         return $this->_realms[$name];
     }
 

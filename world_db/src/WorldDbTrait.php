@@ -1,6 +1,6 @@
 <?php
 
-namespace ACore\World;
+namespace ACore\WorldDb;
 
 trait WorldDbTrait {
 

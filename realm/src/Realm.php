@@ -26,14 +26,13 @@ class Realm extends Provider implements SoapProvider, WorldDbProvider, CharDbPro
 
     protected $name;
 
-    function __construct($name, CharDb $charDB, $modules = array(), WorldDb $worldDB = NULL, AuthDb $authDB = NULL, SoapCli $soapCli = NULL) {
+    function __construct($name, CharDb $charDB, $modules = array(), $conf = null, WorldDb $worldDB = NULL, AuthDb $authDB = NULL, SoapCli $soapCli = NULL, $environment = "prod", $debug = false) {
         $this->charDB = $charDB;
         $this->worldDB = $worldDB;
         $this->authDB = $authDB;
-        $this->name = $name;
         $this->soapCli = $soapCli;
 
-        $this->registerModules($modules);
+        parent::__construct($name, $modules, $conf, $environment, $debug);
     }
 
     public static function createByConf($conf, $realmName) {
@@ -63,7 +62,7 @@ class Realm extends Provider implements SoapProvider, WorldDbProvider, CharDbPro
             );
         }
 
-        $_this = new static($realmName, $charDB, A::V($conf, "modules"), $worldDB, $authDB, $soapCli);
+        $_this = new static($realmName, $charDB, A::V($conf, "modules"), $conf, $worldDB, $authDB, $soapCli);
 
         return $_this;
     }

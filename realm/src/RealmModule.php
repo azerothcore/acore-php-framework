@@ -7,6 +7,7 @@ use ACore\System\Module;
 use ACore\AuthDb\AuthDbTrait;
 use ACore\WorldDb\WorldDbTrait;
 use ACore\CharDb\CharDbTrait;
+use ACore\System\Provider;
 
 abstract class RealmModule extends Module implements WorldDbProvider, CharDbProvider, AuthDbProvider {
 

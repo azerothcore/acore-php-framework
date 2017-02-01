@@ -9,7 +9,10 @@ class ConfDef extends Conf {
     // system wide dependencies
     // all default modules will be included here
     public $modules = [
-        "system" => [],
+        "system" => [
+            \Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle::class,
+            \Symplify\ModularRouting\SymplifyModularRoutingBundle::class
+        ],
         "realmlist" => [
             \ACore\Account\AccountModule::class
         ],

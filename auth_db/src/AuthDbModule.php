@@ -5,6 +5,7 @@ namespace ACore\AuthDb;
 use ACore\AuthDb\AuthDbProvider;
 use ACore\AuthDb\AuthDbTrait;
 use ACore\System\Module;
+use ACore\System\Provider;
 
 abstract class AuthDbModule extends Module implements AuthDbProvider {
 

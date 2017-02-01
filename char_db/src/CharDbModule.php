@@ -3,6 +3,7 @@
 namespace ACore\CharDb;
 
 use ACore\System\Module;
+use ACore\System\Provider;
 
 abstract class CharDbModule extends Module implements CharDbProvider {
 

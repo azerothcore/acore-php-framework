@@ -15,11 +15,11 @@ class Service extends Provider {
     protected $_rlists = array();
 
     public static function createByConf($conf, $name = "") {
-        return new static($conf, $name);
+        return new static($name, $conf);
     }
 
-    public function __construct(Conf $conf, $name = "", $environment = "prod", $debug = false) {
-        parent::__construct($conf, $name, $conf->modules["system"], $environment, $debug);
+    public function __construct($name = "", $conf = null, $environment = "prod", $debug = false) {
+        parent::__construct($name, $conf->modules["system"], $conf, $environment, $debug);
         $rList = $conf->rList;
 
         foreach ($rList as $realmlist => $rListInfo) {
@@ -43,6 +43,9 @@ class Service extends Provider {
 
     public function registerRListByConf($realmlist, $conf) {
         $this->_rlists[$realmlist] = RList::createByConf($conf, $realmlist);
+
+        $this->getRouteCollection()->addCollection($this->getRList($realmlist)->getRouteCollection());
+
         return $this->_rlists[$realmlist];
     }
 
