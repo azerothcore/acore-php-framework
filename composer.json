@@ -22,7 +22,7 @@
         "psr-4": {
             "ACore\\Account\\": "account/src/",
             "ACore\\AuthDb\\": "auth_db/src/",
-            "ACore\\Character\\": "characters/src/",
+            "ACore\\Character\\": "character/src/",
             "ACore\\CharDb\\": "char_db/src/",
             "ACore\\Creature\\": "creature/src/",
             "ACore\\Database\\": "database/src/",
