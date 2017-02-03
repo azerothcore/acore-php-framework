@@ -12,8 +12,13 @@ use ACore\System\Utils\ApiController;
  */
 class CreatureTmplController extends ApiController {
 
-    public function getServiceName() {
-        return "creature.creature_mgr";
+    /**
+     * 
+     * @param Request $req
+     * @return \ACore\Creature\Repository\CreatureTmplRepository
+     */
+    public function getRepo(Request $req) {
+        return parent::get("creature.creature_mgr")->getCharacterRepo($req->get("_prefix"));
     }
 
     /**

@@ -10,19 +10,15 @@ use ACore\System\Utils\ApiController;
  *
  * @Route("/{_prefix}/account/", defaults = { "_prefix" = "def" })
  */
-class AccountTmplController extends ApiController {
+class AccountController extends ApiController {
 
-    public function getServiceName() {
-        return "account.account_mgr";
-    }
-    
     /**
      * 
      * @param Request $req
-     * @return 
+     * @return \ACore\Account\Repository\AccountRepository
      */
     public function getRepo(Request $req) {
-        return parent::getRepo($req);
+        return parent::get("account.account_mgr")->getAccountRepo($req->get("_prefix"));
     }
 
     /**

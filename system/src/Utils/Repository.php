@@ -18,7 +18,7 @@ class Repository extends \Doctrine\ORM\EntityRepository {
      * 
      * @return \Doctrine\DBAL\Connection
      */
-    public function getDBConn() {
+    public function getDbConn() {
         return $this->getEntityManager()->getConnection();
     }
 

@@ -3,13 +3,12 @@
 namespace ACore\Character\Services;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use ACore\Character\Entity\CharacterTemplate;
 use ACore\Character\Entity\Character;
-use ACore\CharDb\Utils\WorldDbTrait;
+use ACore\CharDb\Utils\CharDbTrait;
 
 class CharacterMgr {
 
-    use WorldDbTrait;
+    use CharDbTrait;
     use ContainerAwareTrait;
 
     /**
@@ -18,12 +17,7 @@ class CharacterMgr {
      * @return \ACore\Character\Repository\CharacterTmplRepository
      */
     public function getCharacterRepo($alias) {
-        return $this->getCharEm($alias)->getRepository(CharacterTemplate::class);
-    }
-
-
-    public function getCharacterSoap($alias) {
-        
+        return $this->getCharEm($alias)->getRepository(Character::class);
     }
 
 }

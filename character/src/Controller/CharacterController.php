@@ -10,10 +10,15 @@ use ACore\System\Utils\ApiController;
  *
  * @Route("/{_prefix}/character/", defaults = { "_prefix" = "def" })
  */
-class CharacterTmplController extends ApiController {
+class CharacterController extends ApiController {
 
-    public function getServiceName() {
-        return "character.character_mgr";
+    /**
+     * 
+     * @param Request $req
+     * @return \ACore\Character\Repository\CharacterRepository
+     */
+    public function getRepo(Request $req) {
+        return parent::get("character.character_mgr")->getCharacterRepo($req->get("_prefix"));
     }
 
     /**

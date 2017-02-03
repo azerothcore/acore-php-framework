@@ -14,11 +14,11 @@ class AccountRepository extends Repository {
      * @return Account
      */
     public function verifyAccount($username, $password) {
-        $authDB = $this->getEM();
+        $authDb = $this->getEM();
 
         $enc_password = sha1(strtoupper($username) . ':' . strtoupper($password));
 
-        return $authDB->createQueryBuilder("SELECT * "
+        return $authDb->createQueryBuilder("SELECT * "
                                 . "FROM account "
                                 . "WHERE LOWER(username) = LOWER(:username) AND sha_pass_hash = :password")
                         ->setParameter("username", $username)
@@ -32,9 +32,9 @@ class AccountRepository extends Repository {
      * @param boolean $lock true|false
      */
     public function setAccountLock($username, $ip = '127.0.0.1', $lock = true) {
-        $authDB = $this->getEntityManager();
+        $authDb = $this->getEntityManager();
 
-        $authDB->createQueryBuilder()
+        $authDb->createQueryBuilder()
                 ->update("account")
                 ->set("last_ip", $ip)
                 ->set("locked", $lock)

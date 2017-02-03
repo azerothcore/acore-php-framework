@@ -4,23 +4,22 @@ namespace ACore\WorldDb\Utils;
 
 use ACore\Database\Services\DoctrineDbMgr;
 
-trait WorldDBTrait {
+trait WorldDbTrait {
 
     /**
      *
      * @var DoctrineDbMgr 
      */
     protected $worldDb;
-    protected $worldEm;
 
     /**
      * 
      * @return DoctrineDbMgr
      */
-    public function getWorldDB() {
-        return $this->worldDB;
+    public function getWorldDb() {
+        return $this->worldDb;
     }
-    
+
     public function setWorldDb(DoctrineDbMgr $worldDb) {
         $this->worldDb = $worldDb;
         $this->worldDb->configureEntities(array(realpath(__DIR__ . "/../Entity/")));

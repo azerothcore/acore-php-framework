@@ -1,37 +1,36 @@
 <?php
 
-namespace ACore\WorldDb\Utils;
+namespace ACore\CharDb\Utils;
 
 use ACore\Database\Services\DoctrineDbMgr;
 
-trait WorldDBTrait {
+trait CharDbTrait {
 
     /**
      *
      * @var DoctrineDbMgr 
      */
-    protected $worldDb;
-    protected $worldEm;
+    protected $charDb;
 
     /**
      * 
      * @return DoctrineDbMgr
      */
-    public function getWorldDB() {
-        return $this->worldDB;
+    public function getCharDb() {
+        return $this->charDb;
     }
-    
-    public function setWorldDb(DoctrineDbMgr $worldDb) {
-        $this->worldDb = $worldDb;
-        $this->worldDb->configureEntities(array(realpath(__DIR__ . "/../Entity/")));
+
+    public function setWorldDb(DoctrineDbMgr $charDb) {
+        $this->charDb = $charDb;
+        $this->charDb->configureEntities(array(realpath(__DIR__ . "/../Entity/")));
     }
 
     /**
      * 
      * @return \Doctrine\ORM\EntityManager
      */
-    public function getWorldEm($alias) {
-        return $this->worldDb->getEm($alias, "world");
+    public function getCharEm($alias) {
+        return $this->charDb->getEm($alias, "char");
     }
 
 }

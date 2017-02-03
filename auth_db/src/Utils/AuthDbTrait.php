@@ -4,7 +4,7 @@ namespace ACore\AuthDb\Utils;
 
 use ACore\Database\Services\DoctrineDbMgr;
 
-trait AuthDBTrait {
+trait AuthDbTrait {
 
     /**
      *
@@ -17,8 +17,8 @@ trait AuthDBTrait {
      * 
      * @return DoctrineDbMgr
      */
-    public function getAuthDB() {
-        return $this->authDB;
+    public function getAuthDb() {
+        return $this->authDb;
     }
 
     public function setAuthDb(DoctrineDbMgr $authDb) {

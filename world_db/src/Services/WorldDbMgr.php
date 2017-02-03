@@ -3,9 +3,10 @@
 namespace ACore\WorldDb\Services;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use ACore\WorldDb\Utils\WorldDbTrait;
 
 class WorldDbMgr {
 
-    use WorldDBTrait;
+    use WorldDbTrait;
     use ContainerAwareTrait;
 }

@@ -2,7 +2,7 @@
 
 namespace ACore\Character\Repository;
 
-use \ACore\System\Repository;
+use \ACore\System\Utils\Repository;
 
 class CharacterRepository extends Repository {
 

@@ -6,6 +6,6 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 class AuthDbMgr {
 
-    use AuthDBTrait;
+    use AuthDbTrait;
     use ContainerAwareTrait;
 }
