@@ -1,0 +1,6 @@
+services:
+    auth_db.auth_db_mgr:
+        class: ACore\CharDb\Services\CharDbMgr
+        calls:
+          - [ setContainer,['@service_container'] ]
+          - [ setCharDb, ['@database.doctrine_db'] ]

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ACore\Account\Entity\Account
  * 
- * @ORM\Entity(repositoryClass="ACore\Account\Repository\AccountMgr")
+ * @ORM\Entity(repositoryClass="ACore\Account\Repository\AccountRepository")
  * @ORM\Table(name="account")
  */
 class Account {

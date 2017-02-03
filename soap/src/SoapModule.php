@@ -1,10 +1,14 @@
 <?php
 
-namespace ACore\Soap;
+// workaround
+ini_set('soap.wsdl_cache_enabled', 0);
+ini_set('soap.wsdl_cache_ttl', 0);
+ini_set('soap.wsdl_cache', 0);
 
-use ACore\System\Module;
+class ACoreSoapModule {
 
-abstract class SoapModule extends Module implements SoapProvider {
+    public function getContainerExtension() {
+        return new DependencyInjection\SoapExtension();
+    }
 
-    use SoapTrait;
 }

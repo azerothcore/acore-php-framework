@@ -16,26 +16,22 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4,>=2.4.5",
         "symfony/doctrine-bridge": "~3.2,>=3.2.2",
-        "symfony/framework-bundle": "~3.2,>=3.2.2",
-        "symplify/modular-routing": "^1.3"
+        "symfony/framework-bundle": "~3.2,>=3.2.2"
     },
     "autoload": {
         "psr-4": {
             "ACore\\Account\\": "account/src/",
             "ACore\\AuthDb\\": "auth_db/src/",
-            "ACore\\Characters\\": "characters/src/",
+            "ACore\\Character\\": "characters/src/",
             "ACore\\CharDb\\": "char_db/src/",
             "ACore\\Creature\\": "creature/src/",
             "ACore\\Database\\": "database/src/",
             "ACore\\Defines\\": "defines/src/",
             "ACore\\Framework\\": "framework/src/",
             "ACore\\GameMail\\": "game_mail/src/",
-            "ACore\\Realm\\": "realm/src/",
-            "ACore\\Realmlist\\": "realmlist/src/",
             "ACore\\Service\\": "service/src/",
             "ACore\\Soap\\": "soap/src/",
             "ACore\\System\\": "system/src/",
-            "ACore\\Utils\\": "utils/src/",
             "ACore\\WorldDb\\": "world_db/src/"
         }
     },

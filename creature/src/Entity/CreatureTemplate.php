@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ACore\Creature\Entity\CreatureTemplate
  * 
- * @ORM\Entity(repositoryClass="ACore\Creature\Repository\CreatureTmplMgr")
+ * @ORM\Entity(repositoryClass="ACore\Creature\Repository\CreatureTmplRepository")
  * @ORM\Table(name="creature_template")
  */
 class CreatureTemplate {
@@ -18,7 +18,7 @@ class CreatureTemplate {
      * @ORM\Column(name="entry", type="integer")
      * @ORM\Id
      */
-    private $id;
+    private $entry;
 
     /**
      * @var string
@@ -32,12 +32,12 @@ class CreatureTemplate {
      *
      * @return int
      */
-    public function getId() {
-        return $this->id;
+    public function getEntry() {
+        return $this->entry;
     }
 
-    public function setId($id) {
-        $this->id = $id;
+    public function setEntry($entry) {
+        $this->id = $entry;
     }
 
     public function getName() {
