@@ -7,7 +7,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 class ACoreGameMail extends Bundle {
 
     public function getContainerExtension() {
-        return new DependencyInjection\DatabaseExtension();
+        return new DependencyInjection\MailExtension();
     }
 
 }
