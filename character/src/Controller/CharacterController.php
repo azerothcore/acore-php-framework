@@ -13,21 +13,21 @@ use ACore\System\Utils\ApiController;
 class CharacterController extends ApiController {
 
     /**
+     *
+     * @Route("guid/{guid}", name="character_single")
+     */
+    public function getEntryAction(Request $req, $guid) {
+        $res = $this->getRepo($req)->findOneByGuid($guid);
+        return $this->serialize($res);
+    }
+
+    /**
      * 
      * @param Request $req
      * @return \ACore\Character\Repository\CharacterRepository
      */
-    public function getRepo(Request $req) {
+    protected function getRepo(Request $req) {
         return parent::get("character.character_mgr")->getCharacterRepo($req->get("_prefix"));
-    }
-
-    /**
-     *
-     * @Route("guid/{guid}", name="character_single")
-     */
-    public function getEntry(Request $req, $guid) {
-        $res = $this->getRepo($req)->findOneByGuid($guid);
-        return $this->serialize($res);
     }
 
 }

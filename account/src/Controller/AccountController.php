@@ -13,21 +13,21 @@ use ACore\System\Utils\ApiController;
 class AccountController extends ApiController {
 
     /**
+     *
+     * @Route("id/{id}", name="account_single")
+     */
+    public function getEntryAction(Request $req, $id) {
+        $res = $this->getRepo($req)->findOneById($id);
+        return $this->serialize($res);
+    }
+
+    /**
      * 
      * @param Request $req
      * @return \ACore\Account\Repository\AccountRepository
      */
-    public function getRepo(Request $req) {
+    protected function getRepo(Request $req) {
         return parent::get("account.account_mgr")->getAccountRepo($req->get("_prefix"));
-    }
-
-    /**
-     *
-     * @Route("id/{id}", name="account_single")
-     */
-    public function getEntry(Request $req, $id) {
-        $res = $this->getRepo($req)->findOneById($id);
-        return $this->serialize($res);
     }
 
 }

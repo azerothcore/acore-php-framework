@@ -3,6 +3,7 @@
 namespace ACore\AuthDb\Services;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use ACore\AuthDb\Utils\AuthDbTrait;
 
 class AuthDbMgr {
 
