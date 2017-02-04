@@ -18,32 +18,47 @@ class Character {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $guid;
+    protected $id;
 
     /**
      * @var int
      *
      * @ORM\Column(name="account", type="integer")
      */
-    public $account;
+    protected $account;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string")
      */
-    public $name;
+    protected $name;
 
-    public function getGuid() {
-        return $this->guid;
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
     }
 
     public function getAccount() {
         return $this->account;
     }
 
+    public function setAccount($account) {
+        $this->account = $account;
+        return $this;
+    }
+
     public function getName() {
         return $this->name;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+        return $this;
     }
 
 }

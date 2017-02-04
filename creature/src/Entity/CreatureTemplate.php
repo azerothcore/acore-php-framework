@@ -18,26 +18,26 @@ class CreatureTemplate {
      * @ORM\Column(name="entry", type="integer")
      * @ORM\Id
      */
-    private $entry;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string")
      */
-    private $name;
+    protected $name;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getEntry() {
-        return $this->entry;
+    public function getId() {
+        return $this->id;
     }
 
-    public function setEntry($entry) {
-        $this->id = $entry;
+    public function setId($entry) {
+        $this->id = $id;
     }
 
     public function getName() {

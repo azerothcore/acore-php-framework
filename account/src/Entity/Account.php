@@ -19,43 +19,31 @@ class Account {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string")
      */
-    public $username;
+    protected $username;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="locked", type="boolean")
      */
-    public $locked;
+    protected $locked;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string")
      */
-    public $email;
+    protected $email;
 
     public function getId() {
         return $this->id;
-    }
-
-    public function getUsername() {
-        return $this->username;
-    }
-
-    public function isLocked() {
-        return $this->locked == 0 ? false : true;
-    }
-
-    public function getEmail() {
-        return $this->email;
     }
 
     /* public function setId($id) {
@@ -63,14 +51,26 @@ class Account {
       return $this;
       } */
 
+    public function getUsername() {
+        return $this->username;
+    }
+
     public function setUsername($username) {
         $this->username = $username;
         return $this;
     }
 
+    public function isLocked() {
+        return $this->locked == 0 ? false : true;
+    }
+
     public function setLocked($locked) {
         $this->locked = $locked;
         return $this;
+    }
+
+    public function getEmail() {
+        return $this->email;
     }
 
     public function setEmail($email) {
