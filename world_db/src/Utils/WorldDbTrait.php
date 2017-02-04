@@ -12,6 +12,8 @@ trait WorldDbTrait {
      */
     protected $worldDb;
 
+    protected $worldEm = array();
+
     /**
      * 
      * @return DoctrineDbMgr
@@ -27,10 +29,22 @@ trait WorldDbTrait {
 
     /**
      * 
+     * @return DoctrineDbMgr
+     */
+    public function createWorldEm($alias) {
+        $this->worldEm[$alias] = $this->worldDb->createEm($alias, "world");
+    }
+
+    /**
+     * 
      * @return \Doctrine\ORM\EntityManager
      */
     public function getWorldEm($alias) {
-        return $this->worldDb->getEm($alias, "world");
+        if (!isset($this->worldEm[$alias])) {
+            $this->createWorldEm($alias);
+        }
+        
+        return $this->worldEm[$alias];
     }
 
 }

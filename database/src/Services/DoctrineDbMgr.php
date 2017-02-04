@@ -34,7 +34,7 @@ class DoctrineDbMgr {
     /**
      * 
      * @param type $paths
-     * @return EntityManager
+     * @return DoctrineDbMgr
      */
     public function createEm($alias,$type) {
         $this->connectionParams = $this->container->getParameter("database")["connections"][$alias][$type];
@@ -50,10 +50,7 @@ class DoctrineDbMgr {
      * @param type $type
      * @return EntityManager
      */
-    public function getEm($alias,$type) {
-        if (!$this->em)
-            $this->createEm($alias,$type);
-
+    public function getEm() {
         return $this->em;
     }
 
