@@ -16,7 +16,7 @@ class CharacterController extends ApiController {
      *
      * @Route("guid/{guid}", name="character_single")
      */
-    public function getEntryAction(Request $req, $guid) {
+    public function getGuidAction(Request $req, $guid) {
         $res = $this->getRepo($req)->findOneByGuid($guid);
         return $this->serialize($res);
     }
