@@ -27,7 +27,7 @@ class CreatureTmplController extends ApiController {
      * @return \ACore\Creature\Repository\CreatureTmplRepository
      */
     protected function getRepo(Request $req) {
-        return parent::get("creature.creature_mgr")->getCharacterRepo($req->get("_prefix"));
+        return parent::get("creature.creature_mgr")->getCreatureTmplRepo($req->get("_prefix"));
     }
 
 }
