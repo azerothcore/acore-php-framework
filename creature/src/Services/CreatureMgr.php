@@ -3,8 +3,8 @@
 namespace ACore\Creature\Services;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use ACore\Creature\Entity\CreatureTemplate;
-use ACore\Creature\Entity\Creature;
+use ACore\Creature\Entity\CreatureTemplateEntity;
+use ACore\Creature\Entity\CreatureEntity;
 use ACore\WorldDb\Utils\WorldDbTrait;
 
 class CreatureMgr {
@@ -18,7 +18,7 @@ class CreatureMgr {
      * @return \ACore\Creature\Repository\CreatureTmplRepository
      */
     public function getCreatureTmplRepo($alias) {
-        return $this->getWorldEm($alias)->getRepository(CreatureTemplate::class);
+        return $this->getWorldEm($alias)->getRepository(CreatureTemplateEntity::class);
     }
 
     /**
@@ -27,7 +27,7 @@ class CreatureMgr {
      * @return \ACore\Creature\Repository\CreatureRepository
      */
     public function getCreatureRepo($alias) {
-        return $this->getWorldEm($alias)->getRepository(Creature::class);
+        return $this->getWorldEm($alias)->getRepository(CreatureEntity::class);
     }
 
 }

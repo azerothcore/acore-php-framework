@@ -5,12 +5,12 @@ namespace ACore\Account\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ACore\Account\Entity\Account
+ * ACore\Account\Entity\AccountEntity
  * 
  * @ORM\Entity(repositoryClass="ACore\Account\Repository\AccountRepository")
  * @ORM\Table(name="account")
  */
-class Account {
+class AccountEntity {
 
     /**
      * @var int

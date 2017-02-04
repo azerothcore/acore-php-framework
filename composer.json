@@ -30,6 +30,7 @@
             "ACore\\Framework\\": "framework/src/",
             "ACore\\GameMail\\": "game_mail/src/",
             "ACore\\Service\\": "service/src/",
+            "ACore\\Server\\": "server/src/",
             "ACore\\Soap\\": "soap/src/",
             "ACore\\System\\": "system/src/",
             "ACore\\WorldDb\\": "world_db/src/"

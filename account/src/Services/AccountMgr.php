@@ -3,7 +3,7 @@
 namespace ACore\Account\Services;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use ACore\Account\Entity\Account;
+use ACore\Account\Entity\AccountEntity;
 use ACore\AuthDb\Utils\AuthDbTrait;
 
 class AccountMgr {
@@ -17,7 +17,7 @@ class AccountMgr {
      * @return \ACore\Account\Repository\AccountRepository
      */
     public function getAccountRepo($alias) {
-        return $this->getAuthEm($alias)->getRepository(Account::class);
+        return $this->getAuthEm($alias)->getRepository(AccountEntity::class);
     }
 
 }

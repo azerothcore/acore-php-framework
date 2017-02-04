@@ -46,7 +46,7 @@ class AccountRepository extends Repository {
      * API Alias
      * 
      * @param string $username
-     * @return \ACore\Account\Entity\Account
+     * @return \ACore\Account\Entity\AccountEntity
      */
     public function findOneByUsername($username) {
         return parent::findOneByUsername($username);
@@ -56,7 +56,7 @@ class AccountRepository extends Repository {
      * API Alias
      * 
      * @param int $id
-     * @return \ACore\Account\Entity\Account
+     * @return \ACore\Account\Entity\AccountEntity
      */
     public function findOneById($id) {
         return $this->find($id);

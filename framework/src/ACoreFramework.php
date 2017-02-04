@@ -20,6 +20,7 @@ class ACoreFramework extends Bundle {
             new \ACore\Account\ACoreAccount(),
             new \ACore\GameMail\ACoreGameMail(),
             new \ACore\Character\ACoreCharacter(),
+            new \ACore\Server\ACoreServer(),
         );
     }
 

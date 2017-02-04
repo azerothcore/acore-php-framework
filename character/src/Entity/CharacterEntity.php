@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ACore\Character\Repository\CharacterRepository")
  * @ORM\Table(name="characters")
  */
-class Character {
+class CharacterEntity {
 
     /**
      * @var int
@@ -18,7 +18,7 @@ class Character {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    protected $guid;
 
     /**
      * @var int
@@ -34,12 +34,12 @@ class Character {
      */
     protected $name;
 
-    public function getId() {
-        return $this->id;
+    public function getGuid() {
+        return $this->guid;
     }
 
-    public function setId($id) {
-        $this->id = $id;
+    public function setGuid($guid) {
+        $this->guid = $guid;
         return $this;
     }
 

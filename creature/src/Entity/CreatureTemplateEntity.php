@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ACore\Creature\Repository\CreatureTmplRepository")
  * @ORM\Table(name="creature_template")
  */
-class CreatureTemplate {
+class CreatureTemplateEntity {
 
     /**
      * @var int
@@ -18,7 +18,7 @@ class CreatureTemplate {
      * @ORM\Column(name="entry", type="integer")
      * @ORM\Id
      */
-    protected $id;
+    protected $entry;
 
     /**
      * @var string
@@ -26,18 +26,25 @@ class CreatureTemplate {
      * @ORM\Column(name="name", type="string")
      */
     protected $name;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="maxlevel", type="integer")
+     */
+    protected $maxlevel;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId() {
-        return $this->id;
+    public function getEntry() {
+        return $this->entry;
     }
 
-    public function setId($entry) {
-        $this->id = $id;
+    public function setEntry($entry) {
+        $this->entry = $entry;
     }
 
     public function getName() {
@@ -47,5 +54,16 @@ class CreatureTemplate {
     public function setName($name) {
         $this->name = $name;
     }
+    
+    public function getMaxlevel() {
+        return $this->maxlevel;
+    }
+
+    public function setMaxlevel($maxlevel) {
+        $this->maxlevel = $maxlevel;
+        return $this;
+    }
+
+
 
 }

@@ -14,10 +14,10 @@ class CharacterRepository extends Repository {
      * API Alias
      * 
      * @param int $guid
-     * @return \ACore\Character\Entity\Character
+     * @return \ACore\Character\Entity\CharacterEntity
      */
     public function findOneByGuid($guid) {
-        return $this->find($guid);
+        return parent::find($guid);
     }
 
     /**
@@ -44,7 +44,7 @@ class CharacterRepository extends Repository {
      * API Alias
      * 
      * @param string $name
-     * @return \ACore\Character\Entity\Character
+     * @return \ACore\Character\Entity\CharacterEntity
      */
     public function findOneByName($name) {
         return parent::findOneByName($name);

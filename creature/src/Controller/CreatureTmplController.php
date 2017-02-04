@@ -20,6 +20,15 @@ class CreatureTmplController extends ApiController {
         $res = $this->getRepo($req)->findOneByEntry($entry);
         return $this->serialize($res);
     }
+    
+    /**
+     *
+     * @Route("maxlevel/{level}", name="creature_template_list_maxlevel")
+     */
+    public function getMaxLevelAction(Request $req, $level) {
+        $res = $this->getRepo($req)->findByMaxlevel($level);
+        return $this->serialize($res);
+    }
 
     /**
      * 
