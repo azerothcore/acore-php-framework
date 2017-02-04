@@ -3,6 +3,7 @@
 namespace ACore\Character\Services;
 
 use \ACore\Soap\Utils\SoapTrait;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 class CharacterSoapMgr {
 

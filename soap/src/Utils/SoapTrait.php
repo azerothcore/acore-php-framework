@@ -23,6 +23,10 @@ trait SoapTrait {
     public function setSoap(SoapMgr $soap) {
         $this->soap = $soap;
     }
+    
+    public function configure($alias) {
+        $this->soap->configure($alias);
+    }
 
     public function executeCommand($command) {
         return $this->getSoap()->executeCommand($command);

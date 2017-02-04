@@ -2,7 +2,11 @@
 
 namespace ACore\Soap\Services;
 
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+
 class SoapMgr {
+    
+    use ContainerAwareTrait;
 
     private $params = null;
 

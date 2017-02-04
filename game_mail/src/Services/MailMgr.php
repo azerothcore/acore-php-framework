@@ -5,7 +5,7 @@ namespace ACore\GameMail\Services;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use \ACore\Soap\Utils\SoapTrait;
 
-class ServerMgr {
+class MailMgr {
 
     use ContainerAwareTrait;
     use SoapTrait;
