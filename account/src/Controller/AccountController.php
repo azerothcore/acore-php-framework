@@ -17,8 +17,9 @@ class AccountController extends ApiController {
      * @Route("id/{id}", name="account_single")
      */
     public function getIdAction(Request $req, $id) {
-        $res = $this->getRepo($req)->findOneById($id);
-        return $this->serialize($res);
+        //$res = $this->getRepo($req)->findOneById($id);
+        //return $this->serialize($res);
+        return NULL;
     }
 
     /**
