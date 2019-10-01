@@ -36,5 +36,5 @@
             "ACore\\WorldDb\\": "world_db/src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
