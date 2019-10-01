@@ -7,7 +7,7 @@ use \ACore\System\Utils\Repository;
 class CharacterRepository extends Repository {
 
     public function countAccChars($accountId) {
-        return $this->count(["account" => $accountId]);
+        return count($this->findByAccount($accountId));
     }
 
     /**

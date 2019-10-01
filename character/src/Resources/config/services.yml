@@ -3,7 +3,7 @@ services:
         class: ACore\Character\Services\CharacterMgr
         calls:
           - [ setContainer,['@service_container'] ]
-          - [ setWorldDb, ['@database.doctrine_db'] ]
+          - [ setCharDb, ['@database.doctrine_db'] ]
     character.character_soap_mgr:
         class: ACore\Character\Services\CharacterSoapMgr
         calls:

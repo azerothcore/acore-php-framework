@@ -11,7 +11,8 @@ trait AuthDbTrait {
      * @var DoctrineDbMgr 
      */
     protected $authDb;
-    protected $authEm;
+
+    protected $authEm = array();
 
     /**
      * 
@@ -28,10 +29,22 @@ trait AuthDbTrait {
 
     /**
      * 
+     * @return DoctrineDbMgr
+     */
+    public function createAuthEm($alias) {
+        $this->authEm[$alias] = $this->authDb->createEm($alias, "auth");
+    }
+
+    /**
+     * 
      * @return \Doctrine\ORM\EntityManager
      */
     public function getAuthEm($alias) {
-        return $this->authDb->getEm($alias, "auth");
+        if (!isset($this->authEm[$alias])) {
+            $this->createAuthEm($alias);
+        }
+        
+        return $this->authEm[$alias];
     }
 
 }

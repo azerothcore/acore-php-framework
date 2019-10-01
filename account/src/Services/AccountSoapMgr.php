@@ -2,7 +2,8 @@
 
 namespace ACore\Account\Services;
 
-use \ACore\Soap\Utils\SoapTrait;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use ACore\Soap\Utils\SoapTrait;
 
 class AccountSoapMgr {
 

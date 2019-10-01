@@ -12,6 +12,8 @@ trait CharDbTrait {
      */
     protected $charDb;
 
+    protected $charEm = array();
+
     /**
      * 
      * @return DoctrineDbMgr
@@ -20,9 +22,17 @@ trait CharDbTrait {
         return $this->charDb;
     }
 
-    public function setWorldDb(DoctrineDbMgr $charDb) {
+    public function setCharDb(DoctrineDbMgr $charDb) {
         $this->charDb = $charDb;
         $this->charDb->configureEntities(array(realpath(__DIR__ . "/../Entity/")));
+    }
+
+    /**
+     * 
+     * @return DoctrineDbMgr
+     */
+    public function createCharEm($alias) {
+        $this->charEm[$alias] = $this->charDb->createEm($alias, "char");
     }
 
     /**
@@ -30,7 +40,11 @@ trait CharDbTrait {
      * @return \Doctrine\ORM\EntityManager
      */
     public function getCharEm($alias) {
-        return $this->charDb->getEm($alias, "char");
+        if (!isset($this->charEm[$alias])) {
+            $this->createCharEm($alias);
+        }
+        
+        return $this->charEm[$alias];
     }
 
 }

@@ -14,15 +14,20 @@ class AccountRepository extends Repository {
      * @return Account
      */
     public function verifyAccount($username, $password) {
-        $authDb = $this->getEM();
+        $authDb = $this->getEntityManager();
 
         $enc_password = sha1(strtoupper($username) . ':' . strtoupper($password));
+        
+        $qb=$authDb->createQueryBuilder();
+        $query=$qb->select("a")
+                        ->from("ACore\Account\Entity\AccountEntity","a")
+                        ->where($qb->expr()->eq("LOWER(a.username)",":username"))
+                        ->andWhere("a.sha_pass_hash = :password")
+                        ->setParameter("username", strtolower($username))
+                        ->setParameter("password", $enc_password)
+                        ->getQuery();
 
-        return $authDb->createQueryBuilder("SELECT * "
-                                . "FROM account "
-                                . "WHERE LOWER(username) = LOWER(:username) AND sha_pass_hash = :password")
-                        ->setParameter("username", $username)
-                        ->setParameter("password", $enc_password)->getQuery()->getResult();
+        return $query->getOneOrNullResult();
     }
 
     /**
@@ -35,11 +40,13 @@ class AccountRepository extends Repository {
         $authDb = $this->getEntityManager();
 
         $authDb->createQueryBuilder()
-                ->update("account")
-                ->set("last_ip", $ip)
-                ->set("locked", $lock)
-                ->where('username = :username')
-                ->setParameter("username", $username);
+                ->update("ACore\Account\Entity\AccountEntity","a")
+                ->set("a.last_ip", ":last_ip")
+                ->set("a.locked", ":locked")
+                ->where('a.username = :username')
+                ->setParameter("last_ip", $ip)
+                ->setParameter("locked", $lock)
+                ->setParameter("username", $username)->getQuery()->execute();
     }
 
     /**

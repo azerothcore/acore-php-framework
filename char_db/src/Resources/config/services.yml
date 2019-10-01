@@ -1,5 +1,5 @@
 services:
-    auth_db.auth_db_mgr:
+    char_db.char_db_mgr:
         class: ACore\CharDb\Services\CharDbMgr
         calls:
           - [ setContainer,['@service_container'] ]

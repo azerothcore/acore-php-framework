@@ -8,9 +8,9 @@ use ACore\System\Utils\ApiController;
 
 /**
  *
- * @Route("/{_prefix}/character/", defaults = { "_prefix" = "def" })
+ * @Route("/{_prefix}/character_banned/", defaults = { "_prefix" = "def" })
  */
-class CharacterController extends ApiController {
+class CharacterBannedController extends ApiController {
 
     /**
      *
